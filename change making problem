@@ -1,0 +1,36 @@
+////c ++ code////
+
+#include<iostream>
+#include<list>
+#define COINS 5
+using namespace std;
+
+float coins[COINS] = {120, 230 , 450, 774, 1400
+};
+
+void findMinCoin(int cost) {
+   list<int> coinList;
+
+   for(int i = COINS-1; i>=0; i--) {
+      while(cost >= coins[i]) {
+         cost -= coins[i];
+         coinList.push_back(coins[i]); //add coin in the list
+
+      }
+   }
+
+   list<int>::iterator it;
+
+   for(it = coinList.begin(); it != coinList.end(); it++) {
+      cout << *it << ", ";
+   }
+}
+
+main() {
+   int val;
+   cout << "Enter value: ";
+   cin >> val;
+   cout << "Coins are: ";
+   findMinCoin(val);
+   cout << endl;
+}
